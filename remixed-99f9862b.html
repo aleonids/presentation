@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Команда мечты: 3 книги, которые изменят вашу работу</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #f8f9fa;
+            opacity: 0.9;
+        }
+
+        .book-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .book-title {
+            font-size: 2.2em;
+            color: #4a5568;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .book-emoji {
+            font-size: 1.2em;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .author {
+            font-size: 1.1em;
+            color: #718096;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .key-points {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .key-points h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .point {
+            background: rgba(255,255,255,0.8);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .fun-fact {
+            background: linear-gradient(45deg, #a8e6cf, #88d8c0);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #00b894;
+        }
+
+        .fun-fact::before {
+            content: "💡 ";
+            font-size: 1.5em;
+        }
+
+        .interactive-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .test-container {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .question {
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background: #e2e8f0;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .option:hover {
+            background: #cbd5e0;
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .results {
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            min-height: 200px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .emoji-rain {
+            position: fixed;
+            top: -50px;
+            font-size: 2em;
+            animation: fall 3s linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .next-btn, .prev-btn {
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            margin: 10px;
+        }
+
+        .team-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .team-type {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-type:hover {
+            transform: scale(1.05);
+        }
+
+        .team-type h4 {
+            color: #2d3748;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Команда мечты</h1>
+            <p>2 супер-книги, которые превратят вашу команду в команду супергероев!</p>
+        </div>
+
+        <!-- Книга 1: Пять пороков команды -->
+        <div class="book-section">
+            <h2 class="book-title">
+                <span class="book-emoji">😈</span>
+                Пять пороков команды
+            </h2>
+            <p class="author">Патрик Ленсиони</p>
+            
+            <div class="key-points">
+                <h3>🔥 5 смертных грехов команды:</h3>
+                <div class="point">
+                    <strong>1. Отсутствие доверия</strong> - "Я не скажу, что думаю, а вдруг меня уволят!"
+                </div>
+                <div class="point">
+                    <strong>2. Страх конфликта</strong> - "Давайте не будем ссориться" (а проблемы копятся)
+                </div>
+                <div class="point">
+                    <strong>3. Недостаток приверженности</strong> - "Ну ладно, попробуем" (спойлер: не получится)
+                </div>
+                <div class="point">
+                    <strong>4. Уклонение от ответственности</strong> - "Это не моя зона ответственности!"
+                </div>
+                <div class="point">
+                    <strong>5. Игнорирование результатов</strong> - "Главное не победа, а участие" (НЕТ!)
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <strong>Реальная история:</strong> Автор наблюдал команду, где все делали вид, что согласны на встречах, а потом в курилке обсуждали, какая это глупость. Знакомо? 🚬💭
+            </div>
+
+            <div style="background: linear-gradient(45deg, #74b9ff, #0984e3); border-radius: 15px; padding: 20px; margin: 20px 0; text-align: center; color: white;">
+                <h3 style="margin-bottom: 15px; font-size: 1.8em;">💫 Золотое правило команды</h3>
+                <p style="font-size: 1.4em; font-weight: bold; margin: 10px 0;">TEAM = Together Everyone Achieves More</p>
+                <p style="font-size: 1.1em; opacity: 0.9;">Да, это банально, но работает! 🎯</p>
+            </div>
+        </div>
+
+        <!-- Книга 2: 5 секунд до успеха -->
+        <div class="book-section">
+            <h2 class="book-title">
+                <span class="book-emoji">⏰</span>
+                5 секунд до успеха
+            </h2>
+            <p class="author">Мел Роббинс</p>
+            
+            <div class="key-points">
+                <h3>⚡ Магическое правило 5 секунд:</h3>
+                <div class="point">
+                    <strong>Когда нужно что-то сделать - считай 5-4-3-2-1 и ДЕЛАЙ!</strong>
+                </div>
+                <div class="point">
+                    <strong>Мозг за 5 секунд не успевает придумать отговорки</strong>
+                </div>
+                <div class="point">
+                    <strong>Работает для всего:</strong> встать с кровати, заговорить с коллегой, предложить идею
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <strong>Научный факт:</strong> Автор изобрела это правило, потому что не могла заставить себя встать с кровати по утрам. Теперь она миллионер! 💰✨
+            </div>
+        </div>
+
+        <!-- Интерактивный тест -->
+        <div class="interactive-section">
+            <h2>🎪 А теперь самое интересное!</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Давайте узнаем, какие проблемы есть в ВАШЕЙ команде!</p>
+            
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p id="progress-text">Вопрос 1 из 15</p>
+
+            <div class="test-container" id="test-container">
+                <!-- Вопросы будут загружаться динамически -->
+            </div>
+
+            <div class="results" id="results">
+                <!-- Результаты здесь -->
+            </div>
+
+            <button class="btn prev-btn hidden" id="prev-btn" onclick="previousQuestion()">⬅️ Назад</button>
+            <button class="btn next-btn" id="next-btn" onclick="nextQuestion()">Дальше ➡️</button>
+            <button class="btn hidden" id="finish-btn" onclick="showResults()">🎯 Узнать результат!</button>
+            <button class="btn hidden" id="restart-btn" onclick="restartTest()">🔄 Пройти еще раз</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "🤔 Как часто в вашей команде люди открыто говорят о своих ошибках?",
+                options: [
+                    "Никогда - все делают вид, что идеальны",
+                    "Редко - только если поймают с поличным", 
+                    "Иногда - в неформальной обстановке",
+                    "Часто - у нас культура открытости"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "😬 Что происходит, когда в команде возникают разногласия?",
+                options: [
+                    "Все молчат и делают вид, что проблемы нет",
+                    "Обсуждают в кулуарах, но не на встречах",
+                    "Осторожно намекают на проблему",
+                    "Открыто обсуждают и решают конфликт"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🎯 Как команда относится к общим целям?",
+                options: [
+                    "Каждый думает только о своих задачах",
+                    "Знают цели, но не особо стараются",
+                    "Стараются, но не всегда понимают зачем",
+                    "Полностью привержены общему результату"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🚨 Что происходит, когда кто-то не выполняет свои обязательства?",
+                options: [
+                    "Все делают вид, что ничего не произошло",
+                    "Жалуются руководителю за спиной",
+                    "Осторожно намекают коллеге",
+                    "Прямо говорят о проблеме и помогают решить"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "📊 Что важнее всего в вашей команде?",
+                options: [
+                    "Личный комфорт и отсутствие стресса",
+                    "Хорошие отношения с коллегами",
+                    "Выполнение своих задач",
+                    "Достижение общих результатов команды"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "⏰ Как быстро ваша команда принимает решения?",
+                options: [
+                    "Месяцами обсуждают одно и то же",
+                    "Очень долго, все боятся ошибиться",
+                    "Довольно быстро, но не все согласны",
+                    "Быстро и все поддерживают решение"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🗣️ Как часто вы выступаете с инициативами на встречах?",
+                options: [
+                    "Никогда - боюсь, что скажут",
+                    "Очень редко - только если уверен на 100%",
+                    "Иногда - когда тема мне близка",
+                    "Часто - применяю правило 5 секунд!"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🔍 Как команда анализирует свои неудачи?",
+                options: [
+                    "Никак - быстро переключаются на другое",
+                    "Ищут виноватого",
+                    "Поверхностно обсуждают что пошло не так",
+                    "Глубоко анализируют и делают выводы"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "💪 Что мотивирует вашу команду больше всего?",
+                options: [
+                    "Отсутствие проблем и стабильность",
+                    "Личное признание",
+                    "Интересные задачи",
+                    "Общий успех и достижения команды"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🤝 Если у вас есть классная идея, что вы делаете?",
+                options: [
+                    "Держу при себе - вдруг не понравится",
+                    "Обсуждаю только с близкими коллегами",
+                    "Жду подходящего момента долго-долго",
+                    "5-4-3-2-1 и озвучиваю сразу!"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "📝 Как проходят ваши командные встречи?",
+                options: [
+                    "Все молчат, только руководитель говорит",
+                    "Несколько человек доминируют в разговоре",
+                    "Обсуждаем, но решения принимает босс",
+                    "Активно участвуют все, решения общие"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🎪 Атмосфера в команде больше всего напоминает:",
+                options: [
+                    "Минное поле - нужно осторожно ступать",
+                    "Театр - все играют роли",
+                    "Школу - есть учитель и ученики",
+                    "Семью - поддержка и честность"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🏃‍♀️ Когда нужно сделать что-то неприятное/сложное:",
+                options: [
+                    "Откладываю до последнего",
+                    "Ищу способы избежать этого",
+                    "Делаю, но с большим трудом",
+                    "Считаю 5-4-3-2-1 и делаю!"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "💔 Что происходит с доверием, когда кто-то подводит команду?",
+                options: [
+                    "Доверие исчезает навсегда",
+                    "Становятся осторожнее с этим человеком",
+                    "Дают второй шанс, но с опаской",
+                    "Обсуждают проблему и восстанавливают доверие"
+                ],
+                scores: [0, 1, 2, 3]
+            },
+            {
+                question: "🎯 Как команда отмечает успехи?",
+                options: [
+                    "Никак - сразу берутся за новые задачи",
+                    "Руководитель говорит 'молодцы' и все",
+                    "Неформально обсуждают за кофе",
+                    "Празднуют вместе и анализируют, что помогло"
+                ],
+                scores: [0, 1, 2, 3]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+        let totalScore = 0;
+
+        function displayQuestion() {
+            const container = document.getElementById('test-container');
+            const question = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question">${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, index) => 
+                        `<button class="option" onclick="selectOption(${index})">${option}</button>`
+                    ).join('')}
+                </div>
+            `;
+
+            // Обновляем прогресс
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = `Вопрос ${currentQuestion + 1} из ${questions.length}`;
+
+            // Управляем кнопками
+            document.getElementById('prev-btn').classList.toggle('hidden', currentQuestion === 0);
+            document.getElementById('next-btn').classList.toggle('hidden', currentQuestion === questions.length - 1);
+            document.getElementById('finish-btn').classList.toggle('hidden', currentQuestion !== questions.length - 1);
+        }
+
+        function selectOption(optionIndex) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+            
+            answers[currentQuestion] = optionIndex;
+        }
+
+        function nextQuestion() {
+            if (answers[currentQuestion] === undefined) {
+                alert('Пожалуйста, выберите ответ! 🤗');
+                return;
+            }
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+        function showResults() {
+            if (answers[currentQuestion] === undefined) {
+                alert('Пожалуйста, выберите ответ! 🤗');
+                return;
+            }
+
+            // Подсчитываем результат
+            totalScore = 0;
+            for (let i = 0; i < questions.length; i++) {
+                totalScore += questions[i].scores[answers[i]];
+            }
+
+            const maxScore = questions.length * 3;
+            const percentage = Math.round((totalScore / maxScore) * 100);
+
+            let resultTitle, resultText, resultEmoji, advice;
+
+            if (percentage >= 80) {
+                resultTitle = "🏆 КОМАНДА МЕЧТЫ!";
+                resultEmoji = "🎉✨🚀";
+                resultText = `Ваша команда набрала ${totalScore} из ${maxScore} баллов (${percentage}%)! Вы практически идеальны!`;
+                advice = "Продолжайте в том же духе! Возможно, стоит поделиться своим опытом с другими командами.";
+            } else if (percentage >= 60) {
+                resultTitle = "👍 ХОРОШАЯ КОМАНДА";
+                resultEmoji = "😊💪";
+                resultText = `Ваша команда набрала ${totalScore} из ${maxScore} баллов (${percentage}%). Есть потенциал для роста!`;
+                advice = "У вас отличная основа! Поработайте над доверием и открытостью - и будете на высоте.";
+            } else if (percentage >= 40) {
+                resultTitle = "😐 КОМАНДА С ПРОБЛЕМАМИ";
+                resultEmoji = "🤔⚠️";
+                resultText = `Ваша команда набрала ${totalScore} из ${maxScore} баллов (${percentage}%). Есть над чем работать!`;
+                advice = "Время принимать меры! Начните с построения доверия и открытого обсуждения проблем.";
+            } else {
+                resultTitle = "🆘 КОМАНДА В КРИЗИСЕ";
+                resultEmoji = "😱🔥";
+                resultText = `Ваша команда набрала ${totalScore} из ${maxScore} баллов (${percentage}%). Срочно нужны перемены!`;
+                advice = "Не паникуйте! Это отличная отправная точка для трансформации. Начните с малого - доверия.";
+            }
+
+            document.getElementById('test-container').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('finish-btn').style.display = 'none';
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div style="font-size: 3em; margin-bottom: 20px;">${resultEmoji}</div>
+                <h2 style="color: #2d3748; margin-bottom: 20px;">${resultTitle}</h2>
+                <p style="font-size: 1.3em; margin-bottom: 20px;">${resultText}</p>
+                <div style="background: rgba(255,255,255,0.8); border-radius: 10px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #2d3748; margin-bottom: 10px;">💡 Рекомендации:</h3>
+                    <p style="color: #4a5568;">${advice}</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.8); border-radius: 10px; padding: 20px; margin: 20px 0;">
+                    <h3 style="color: #2d3748; margin-bottom: 10px;">📚 Что читать дальше:</h3>
+                    <p style="color: #4a5568;">
+                        ${percentage < 60 ? 
+                            "Начните с 'Пяти пороков команды' - это точно ваша книга!" : 
+                            "Углубитесь в правило '5 секунд' и применяйте его каждый день!"
+                        }
+                    </p>
+                </div>
+            `;
+            resultsDiv.classList.add('show');
+            document.getElementById('restart-btn').classList.remove('hidden');
+
+            // Запускаем дождь из эмодзи
+            createEmojiRain();
+        }
+
+        function createEmojiRain() {
+            const emojis = ['🎉', '⭐', '🚀', '💪', '🏆', '✨'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji-rain';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + 'vw';
+                    emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => emoji.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        function restartTest() {
+            currentQuestion = 0;
+            answers = [];
+            totalScore = 0;
+            
+            document.getElementById('test-container').style.display = 'block';
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('next-btn').style.display = 'inline-block';
+            document.getElementById('restart-btn').classList.add('hidden');
+            
+            displayQuestion();
+        }
+
+        // Инициализация
+        displayQuestion();
+
+        // Добавляем немного магии
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления элементов при скролле
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.book-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
